@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language: Silver
 " Maintainer: Vytautas Astrauskas
-" Latest Revision: 07 February 2015
+" Latest Revision: 22 August 2015
 
 if exists("b:current_syntax")
   finish
@@ -9,22 +9,39 @@ endif
 
 let b:current_syntax = "sil"
 
-syn keyword mainKeywords var new
-syn keyword objectDefinitions field method returns
-syn keyword controlStatements if else
-syn keyword contractStatements requires ensures inhale exhale
-syn keyword types Int Ref Bool
-syn keyword specialValues null true false write none
-syn keyword builtinFunctions acc old
+syntax keyword silverFunction function method predicate
+syntax keyword silverTypeDef field
+syntax keyword silverConditional if else
+syntax keyword silverRepeat while
+syntax keyword silverStatement assert assume inhale exhale fold unfold
+syntax keyword silverKeyword var new
+syntax keyword silverType Int Ref Bool Seq Set
+syntax keyword silverLogic invariant requires ensures
+syntax keyword silverOperator forall exists old fresh acc unfolding in
+syntax keyword silverPermission none write
+syntax keyword silverBoolean true false
 
-syn region codeBlock start="{" end="}" fold transparent
-syn region comment start="/\*" end="\*/" fold
-syn region comment start="//" end="\n" fold
+syntax region silverCodeBlock start="{" end="}" fold transparent
+syntax region silverComment start="/\*" end="\*/" fold
+syntax region silverComment start="//" end="\n" fold
 
-hi! def link mainKeywords SpecialKey
-hi! def link controlStatements SpecialKey
-hi! def link objectDefinitions SpecialKey
-hi! def link contractStatements SpecialKey
-hi! def link specialValues LineNr
-hi! def builtinFunctions term=bold cterm=bold gui=bold
-hi! def link types Type
+syntax match silverNumber /\d\+\>/
+syntax match silverIdentifier /\<\w\+\>/
+
+syntax match silverOperator "==>"
+syntax match silverOperator "<==>"
+syntax match silverOperator ":="
+
+highlight link silverFunction Function
+highlight link silverTypeDef Typedef
+highlight link silverConditional Conditional
+highlight link silverRepeat Repeat
+highlight link silverStatement Statement
+highlight link silverKeyword Keyword
+highlight link silverType Type
+highlight link silverLogic Debug
+highlight link silverOperator Operator
+highlight link silverPermission Boolean
+highlight link silverBoolean Boolean
+highlight link silverComment Comment
+highlight link silverNumber Number
