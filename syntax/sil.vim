@@ -15,7 +15,7 @@ syntax keyword silverConditional if else
 syntax keyword silverRepeat while
 syntax keyword silverStatement assert assume inhale exhale fold unfold
 syntax keyword silverKeyword var new
-syntax keyword silverType Int Ref Bool Seq Set
+syntax keyword silverType Int Ref Bool Seq Set Perm
 syntax keyword silverLogic invariant requires ensures
 syntax keyword silverOperator forall exists old fresh acc unfolding in
 syntax keyword silverPermission none write
