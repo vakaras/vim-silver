@@ -10,7 +10,8 @@ else
 endif
 
 function! SyntaxCheckers_sil_silicon_GetLocList() dict
-    let makeprg = self.makeprgBuild({})
+    let makeprg = self.makeprgBuild({
+          \ 'args_before': '--assume-server-running --ideMode' })
     "let errorformat = '%[a-zA-z\]\,%l:%c\,%s\,%m'
     let errorformat = '%.%#\,%l:%c\,%.%#\,%m'
     return SyntasticMake({
@@ -23,4 +24,4 @@ endfunction
 call g:SyntasticRegistry.CreateAndRegisterChecker({
             \ 'filetype': 'sil',
             \ 'name': 'silicon',
-            \ 'exec': 'silicon-ide' })
+            \ 'exec': 'silicon' })
