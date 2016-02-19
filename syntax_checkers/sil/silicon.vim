@@ -11,13 +11,13 @@ endif
 
 function! SyntaxCheckers_sil_silicon_GetLocList() dict
     let makeprg = self.makeprgBuild({
-          \ 'args_before': '--assume-server-running --ideMode' })
+          \ 'args_before': '--useNailgun --ideMode' })
     "let errorformat = '%[a-zA-z\]\,%l:%c\,%s\,%m'
     let errorformat = '%.%#\,%l:%c\,%.%#\,%m'
     return SyntasticMake({
           \ 'makeprg': makeprg,
           \ 'errorformat': errorformat,
-          \ 'returns': [0],
+          \ 'returns': [0, 1],
           \ 'defaults': { 'bufnr': bufnr('') } })
 endfunction
 
